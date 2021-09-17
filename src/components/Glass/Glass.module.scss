@@ -1,0 +1,76 @@
+.Glass {
+  position: relative;
+  flex-shrink: 0;
+  max-width: 15rem;
+  max-height: 20rem;
+  border: 10px solid transparent;
+  border-radius: 0 0 4rem 4rem;
+  background-color: transparent;
+
+  @mixin drink-type($width, $height, $glass-color) {
+    width: $width;
+    height: $height;
+    border-color: $glass-color;
+    background-color: $glass-color;
+
+    .mugEar {
+      border-color: $glass-color;
+    }
+  }
+
+  &.beer {
+    $width: 12.5rem;
+    $height: 18rem;
+    $glass-color: #eee;
+    @include drink-type($width, $height, $glass-color);
+    min-height: 15rem;
+  }
+
+  &.coffee {
+    $width: 10rem;
+    $height: 10rem;
+    $glass-color: #eee;
+    @include drink-type($width, $height, $glass-color);
+  }
+
+  &.wine {
+    $width: 12.5rem;
+    $height: 12.5rem;
+    $glass-color: #eee;
+    @include drink-type($width, $height, $glass-color);
+    margin-bottom: 10rem;
+    border-radius: 0 0 6rem 6rem;
+
+    .stem {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 100%);
+      width: 1rem;
+      height: 75%;
+      background-color: $glass-color;
+    }
+
+    .stemBase {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 500%);
+      width: 75%;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: $glass-color;
+    }
+  }
+
+  .mugEar {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 40%;
+    height: 40%;
+    transform: translate(calc(50% + 10px), -50%);
+    border: 1rem solid #eee;
+    border-radius: 50%;
+  }
+}
