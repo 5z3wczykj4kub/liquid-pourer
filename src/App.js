@@ -1,24 +1,34 @@
 import { useState } from 'react';
 
+import {
+  faBeer,
+  faCoffee,
+  faWineGlassAlt,
+} from '@fortawesome/free-solid-svg-icons';
+
 import Glass from './components/Glass/Glass';
 import Toggler from './components/Toggler/Toggler';
 import Sidebar from './components/Sidebar/Sidebar';
+import DrinkList from './components/Sidebar/DrinkList/DrinkList';
 
 const DRINKS = [
   {
     drinkType: 'beer',
     liquidColor: '#f28e1c',
     hasMugEar: true,
+    icon: faBeer,
   },
   {
     drinkType: 'coffee',
     liquidColor: '#996633',
     hasMugEar: true,
+    icon: faCoffee,
   },
   {
     drinkType: 'wine',
     liquidColor: '#722f37',
     hasMugEar: false,
+    icon: faWineGlassAlt,
   },
 ];
 
@@ -36,19 +46,11 @@ function App() {
         setIsTouched={setIsTouched}
       />
       <Sidebar isSidebarOpen={isSidebarOpen}>
-        <ul>
-          {DRINKS.map(({ drinkType }, index) => (
-            <li
-              key={drinkType}
-              onClick={() => {
-                setSelectedDrink(DRINKS[index]);
-                setIsSidebarOpen(false);
-              }}
-            >
-              {drinkType}
-            </li>
-          ))}
-        </ul>
+        <DrinkList
+          drinks={DRINKS}
+          setSelectedDrink={setSelectedDrink}
+          setIsSidebarOpen={setIsSidebarOpen}
+        />
       </Sidebar>
       <Glass selectedDrink={selectedDrink} />
     </>

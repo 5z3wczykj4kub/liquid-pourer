@@ -13,17 +13,4 @@
   &.active {
     transform: translateX(0);
   }
-
-  & > ul {
-    margin-top: 4rem;
-    list-style: none;
-    color: #fff;
-    font-size: 1.4rem;
-
-    & > li {
-      padding: 0.5rem;
-      text-align: center;
-      cursor: pointer;
-    }
-  }
 }

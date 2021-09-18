@@ -38,7 +38,7 @@
     $height: 12.5rem;
     $glass-color: #eee;
     @include drink-type($width, $height, $glass-color);
-    margin-bottom: 10rem;
+    margin-bottom: 9.5rem;
     border-radius: 0 0 6rem 6rem;
 
     .stem {

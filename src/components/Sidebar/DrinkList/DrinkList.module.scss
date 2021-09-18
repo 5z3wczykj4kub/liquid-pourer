@@ -1,0 +1,31 @@
+.DrinkList {
+  margin-top: 4rem;
+  list-style: none;
+  color: #fff;
+  font-size: 1.4rem;
+
+  & > li {
+    padding: 0.5rem;
+    text-align: center;
+    text-transform: capitalize;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+
+    &:first-of-type {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+      cursor: default;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:not(:first-of-type):hover {
+        background-color: #eee;
+        color: #000;
+      }
+    }
+
+    & > svg {
+      margin-left: 1rem;
+    }
+  }
+}
