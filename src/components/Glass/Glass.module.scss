@@ -51,7 +51,7 @@
       background-color: $glass-color;
     }
 
-    .stemBase {
+    .base {
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -61,6 +61,15 @@
       border-radius: 50%;
       background-color: $glass-color;
     }
+  }
+
+  &.water {
+    $width: 11rem;
+    $height: 17rem;
+    $glass-color: #eee;
+    @include drink-type($width, $height, $glass-color);
+    min-height: 15rem;
+    border-radius: 0 0 2.5rem 2.5rem;
   }
 
   .mugEar {

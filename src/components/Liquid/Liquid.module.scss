@@ -4,13 +4,18 @@
   height: 100%;
   overflow: hidden;
 
+  &.beer,
   &.coffee,
-  &.beer {
+  &.water {
     border-radius: 0 0 4rem 4rem;
   }
 
   &.wine {
     border-radius: 0 0 6rem 6rem;
+  }
+
+  &.water {
+    border-radius: 0 0 2.5rem 2.5rem;
   }
 
   .Liquid {

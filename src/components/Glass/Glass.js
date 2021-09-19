@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 
 import Button from '../Button/Button';
 import Liquid from '../Liquid/Liquid';
+import LiquidVolume from '../LiquidVoulme/LiquidVoulme';
 
 import styles from './Glass.module.scss';
 
@@ -12,7 +13,8 @@ function Glass({ selectedDrink }) {
   const [isPouring, setIsPouring] = useState(false);
   const [isDrinking, setIsDrinking] = useState(false);
 
-  const { drinkType, liquidColor, hasMugEar } = selectedDrink;
+  const { drinkType, liquidColor, hasMugEar, glassVolume, calories } =
+    selectedDrink;
 
   useEffect(() => setLiquidHeight(0), [drinkType]);
 
@@ -61,12 +63,17 @@ function Glass({ selectedDrink }) {
 
   return (
     <>
+      <LiquidVolume
+        glassVolume={glassVolume}
+        liquidHeight={liquidHeight}
+        calories={calories}
+      />
       <div className={`${styles.Glass} ${styles[drinkType]}`}>
         {hasMugEar && <div className={styles.mugEar}></div>}
         {drinkType === 'wine' && (
           <>
             <div className={styles.stem}></div>
-            <div className={styles.stemBase}></div>
+            <div className={styles.base}></div>
           </>
         )}
         <Liquid

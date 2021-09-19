@@ -4,6 +4,7 @@ import {
   faBeer,
   faCoffee,
   faWineGlassAlt,
+  faTint,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Glass from './components/Glass/Glass';
@@ -17,18 +18,32 @@ const DRINKS = [
     liquidColor: '#f28e1c',
     hasMugEar: true,
     icon: faBeer,
+    glassVolume: 500,
+    calories: 40,
   },
   {
     drinkType: 'coffee',
     liquidColor: '#996633',
     hasMugEar: true,
     icon: faCoffee,
+    glassVolume: 150,
+    calories: 2,
   },
   {
     drinkType: 'wine',
     liquidColor: '#722f37',
     hasMugEar: false,
     icon: faWineGlassAlt,
+    glassVolume: 200,
+    calories: 80,
+  },
+  {
+    drinkType: 'water',
+    liquidColor: '#83d7ee',
+    hasMugEar: false,
+    icon: faTint,
+    glassVolume: 250,
+    calories: 0,
   },
 ];
 
