@@ -59,8 +59,6 @@ function Glass({ selectedDrink }) {
     if (liquidHeight === 0) stopDrinkingLiquidHandler();
   }, [liquidHeight, stopPouringLiquidHandler, stopDrinkingLiquidHandler]);
 
-  console.log(liquidHeight); // remove later
-
   return (
     <>
       <LiquidVolume
