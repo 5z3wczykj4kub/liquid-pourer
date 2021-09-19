@@ -10,7 +10,7 @@ import {
 import Glass from './components/Glass/Glass';
 import Toggler from './components/Toggler/Toggler';
 import Sidebar from './components/Sidebar/Sidebar';
-import DrinkList from './components/Sidebar/DrinkList/DrinkList';
+import DrinkList from './components/DrinkList/DrinkList';
 
 const DRINKS = [
   {
