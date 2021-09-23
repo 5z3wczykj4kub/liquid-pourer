@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 import Button from '../Button/Button';
 import Liquid from '../Liquid/Liquid';
@@ -7,57 +7,63 @@ import LiquidVolume from '../LiquidVoulme/LiquidVoulme';
 import styles from './Glass.module.scss';
 
 function Glass({ selectedDrink }) {
-  const [pourLiquidIntervalId, setPourLiquidIntervalId] = useState();
-  const [drinkLiquidIntervalId, setDrinkLiquidIntervalId] = useState();
   const [liquidHeight, setLiquidHeight] = useState(0);
   const [isPouring, setIsPouring] = useState(false);
-  const [isDrinking, setIsDrinking] = useState(false);
+  const [isSpilling, setIsSpilling] = useState(false);
+
+  function pourLiquidHandler() {
+    if (liquidHeight === 100) return;
+    setIsPouring(true);
+  }
+
+  function stopPouringLiquidHandler() {
+    setIsPouring(false);
+  }
+
+  function spillLiquidHandler() {
+    if (liquidHeight === 0) return;
+    setIsSpilling(true);
+  }
+
+  function stopSpillingLiquidHandler() {
+    setIsSpilling(false);
+  }
+
+  useEffect(
+    function changeLiquidHeightBasedOnAction() {
+      let intervalId;
+      if (isPouring)
+        intervalId = setInterval(
+          () => setLiquidHeight((prevLiquidHeight) => prevLiquidHeight + 1),
+          50
+        );
+      if (isSpilling)
+        intervalId = setInterval(
+          () => setLiquidHeight((prevLiquidHeight) => prevLiquidHeight - 1),
+          50
+        );
+      return () => clearInterval(intervalId);
+    },
+    [isPouring, isSpilling]
+  );
+
+  useEffect(
+    function keepLiquidHeightInRange() {
+      if (isPouring && liquidHeight === 100) setIsPouring(false);
+      if (isSpilling && liquidHeight === 0) setIsSpilling(false);
+    },
+    [liquidHeight, isPouring, isSpilling]
+  );
 
   const { drinkType, liquidColor, hasMugEar, glassVolume, calories } =
     selectedDrink;
 
-  useEffect(() => setLiquidHeight(0), [drinkType]);
-
-  // pour handlers
-  function pourLiquidHandler() {
-    if (liquidHeight === 100) return;
-
-    setIsPouring(true);
-
-    setPourLiquidIntervalId(
-      setInterval(() => {
-        setLiquidHeight((prevLiquidHeight) => prevLiquidHeight + 1);
-      }, 50)
-    );
-  }
-
-  const stopPouringLiquidHandler = useCallback(() => {
-    setIsPouring(false);
-    clearInterval(pourLiquidIntervalId);
-  }, [pourLiquidIntervalId]);
-
-  // drink handlers
-  function drinkLiquidHandler() {
-    if (liquidHeight === 0) return;
-
-    setIsDrinking(true);
-
-    setDrinkLiquidIntervalId(
-      setInterval(() => {
-        setLiquidHeight((prevLiquidHeight) => prevLiquidHeight - 1);
-      }, 50)
-    );
-  }
-
-  const stopDrinkingLiquidHandler = useCallback(() => {
-    setIsDrinking(false);
-    clearInterval(drinkLiquidIntervalId);
-  }, [drinkLiquidIntervalId]);
-
-  useEffect(() => {
-    if (liquidHeight === 100) stopPouringLiquidHandler();
-    if (liquidHeight === 0) stopDrinkingLiquidHandler();
-  }, [liquidHeight, stopPouringLiquidHandler, stopDrinkingLiquidHandler]);
+  useEffect(
+    function resetLiquidHeightOnDrinkChange() {
+      setLiquidHeight(0);
+    },
+    [drinkType]
+  );
 
   return (
     <>
@@ -81,20 +87,20 @@ function Glass({ selectedDrink }) {
         />
       </div>
       <div className={styles.controls}>
-        <Button.Drink
-          isDrinking={isDrinking}
-          drinkLiquid={drinkLiquidHandler}
-          stopDrinkingLiquid={stopDrinkingLiquidHandler}
+        <Button
+          isChanging={isSpilling}
+          changeLiquidHeight={spillLiquidHandler}
+          stopChangingLiquidHeight={stopSpillingLiquidHandler}
         >
-          Drink
-        </Button.Drink>
-        <Button.Pour
-          isPouring={isPouring}
-          pourLiquid={pourLiquidHandler}
-          stopPouringLiquid={stopPouringLiquidHandler}
+          Spill
+        </Button>
+        <Button
+          isChanging={isPouring}
+          changeLiquidHeight={pourLiquidHandler}
+          stopChangingLiquidHeight={stopPouringLiquidHandler}
         >
           Pour
-        </Button.Pour>
+        </Button>
       </div>
     </>
   );
