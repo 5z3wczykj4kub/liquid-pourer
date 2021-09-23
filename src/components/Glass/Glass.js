@@ -32,12 +32,12 @@ function Glass({ selectedDrink }) {
   useEffect(
     function changeLiquidHeightBasedOnAction() {
       let intervalId;
-      if (isPouring)
+      if (isPouring && !isSpilling)
         intervalId = setInterval(
           () => setLiquidHeight((prevLiquidHeight) => prevLiquidHeight + 1),
           50
         );
-      if (isSpilling)
+      if (isSpilling && !isPouring)
         intervalId = setInterval(
           () => setLiquidHeight((prevLiquidHeight) => prevLiquidHeight - 1),
           50
@@ -49,8 +49,8 @@ function Glass({ selectedDrink }) {
 
   useEffect(
     function keepLiquidHeightInRange() {
-      if (isPouring && liquidHeight === 100) setIsPouring(false);
-      if (isSpilling && liquidHeight === 0) setIsSpilling(false);
+      if (isPouring && !isSpilling && liquidHeight === 100) setIsPouring(false);
+      if (isSpilling && !isPouring && liquidHeight === 0) setIsSpilling(false);
     },
     [liquidHeight, isPouring, isSpilling]
   );
