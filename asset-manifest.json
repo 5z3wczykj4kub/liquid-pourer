@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/liquid-pourer/static/css/main.baa4d7aa.chunk.css",
-    "main.js": "/liquid-pourer/static/js/main.ad989312.chunk.js",
-    "main.js.map": "/liquid-pourer/static/js/main.ad989312.chunk.js.map",
+    "main.js": "/liquid-pourer/static/js/main.23978e69.chunk.js",
+    "main.js.map": "/liquid-pourer/static/js/main.23978e69.chunk.js.map",
     "runtime-main.js": "/liquid-pourer/static/js/runtime-main.f4e11394.js",
     "runtime-main.js.map": "/liquid-pourer/static/js/runtime-main.f4e11394.js.map",
-    "static/js/2.48ce78d9.chunk.js": "/liquid-pourer/static/js/2.48ce78d9.chunk.js",
-    "static/js/2.48ce78d9.chunk.js.map": "/liquid-pourer/static/js/2.48ce78d9.chunk.js.map",
+    "static/js/2.9e5ef7a6.chunk.js": "/liquid-pourer/static/js/2.9e5ef7a6.chunk.js",
+    "static/js/2.9e5ef7a6.chunk.js.map": "/liquid-pourer/static/js/2.9e5ef7a6.chunk.js.map",
     "static/js/3.6299e642.chunk.js": "/liquid-pourer/static/js/3.6299e642.chunk.js",
     "static/js/3.6299e642.chunk.js.map": "/liquid-pourer/static/js/3.6299e642.chunk.js.map",
     "index.html": "/liquid-pourer/index.html",
     "static/css/main.baa4d7aa.chunk.css.map": "/liquid-pourer/static/css/main.baa4d7aa.chunk.css.map",
-    "static/js/2.48ce78d9.chunk.js.LICENSE.txt": "/liquid-pourer/static/js/2.48ce78d9.chunk.js.LICENSE.txt"
+    "static/js/2.9e5ef7a6.chunk.js.LICENSE.txt": "/liquid-pourer/static/js/2.9e5ef7a6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f4e11394.js",
-    "static/js/2.48ce78d9.chunk.js",
+    "static/js/2.9e5ef7a6.chunk.js",
     "static/css/main.baa4d7aa.chunk.css",
-    "static/js/main.ad989312.chunk.js"
+    "static/js/main.23978e69.chunk.js"
   ]
 }
